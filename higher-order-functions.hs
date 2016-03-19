@@ -7,3 +7,7 @@ seven = const 7
 --Currying the add function
 add x y = x + y
 add3 = add(3)
+add3' = (+)(3)
+
+--Creating the .+ operator
+(a,b) .+ (c,d) = (a+c, b+d)
