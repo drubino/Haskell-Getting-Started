@@ -33,4 +33,6 @@ select (element : list) selector = selector(element) : select(list)(selector)
 --A list of all natural numbers
 naturalNumbersFrom n = n : naturalNumbersFrom(n+1)
 naturalNumbers = naturalNumbersFrom(1)
+
+
     
