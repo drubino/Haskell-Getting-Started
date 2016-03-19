@@ -8,6 +8,13 @@ seven = const 7
 add x y = x + y
 add3 = add(3)
 add3' = (+)(3)
+add3'' = (+3)
 
 --Creating the .+ operator
 (a,b) .+ (c,d) = (a+c, b+d)
+
+--The map function
+lengths list = map(length)(list)
+
+--The filter function
+nonEmpty list = filter(\x -> not(null(x)))(list)
