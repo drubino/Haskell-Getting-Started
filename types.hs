@@ -13,3 +13,7 @@ getLength list = length(list)
 --Typeclasses in Polymorphic Functions
 showSum :: (Num t, Show t) => [t] -> [Char]
 showSum list = show(sum(list))
+
+--Type synonym
+type String = [Char]
+
