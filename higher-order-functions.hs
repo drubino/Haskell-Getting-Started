@@ -24,4 +24,8 @@ sumList list = foldl(+)(0)(list)
 
 --The zip function
 pointwiseSum list1 list2 = map(\(x,y) -> x + y)(zip(list1)(list2))
-pointwiseSum' list1 list2 = zipWith(+)
+pointwiseSum' list1 list2 = zipWith(+)(list1)(list2)
+
+--Function composition
+notNull x = (not.null)(x)
+notNull' = (not.null)
