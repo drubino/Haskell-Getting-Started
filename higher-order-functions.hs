@@ -18,3 +18,10 @@ lengths list = map(length)(list)
 
 --The filter function
 nonEmpty list = filter(\x -> not(null(x)))(list)
+
+--The fold function
+sumList list = foldl(+)(0)(list)
+
+--The zip function
+pointwiseSum list1 list2 = map(\(x,y) -> x + y)(zip(list1)(list2))
+pointwiseSum' list1 list2 = zipWith(+)
