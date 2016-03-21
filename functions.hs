@@ -5,7 +5,8 @@ module Functions(
     repeatString,
     elementAt,
     select,
-    naturalNumbers
+    naturalNumbers,
+    selectMany
 ) where
 
 --Returns the square of x
@@ -39,6 +40,10 @@ elementAt list index = case list of
 --Selects a value for each value in the list
 select [] selector = []
 select (element : list) selector = selector(element) : select(list)(selector)
+selectMany :: [t] -> (t -> [u]) -> [u]
+selectMany list projection = case list of 
+    (head : tail) -> projection(head) ++ selectMany(tail)(projection) 
+    [] -> []    
 
 --A list of all natural numbers
 naturalNumbersFrom n = n : naturalNumbersFrom(n+1)
