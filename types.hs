@@ -18,7 +18,9 @@ module Types(
     not',
     and',
     or',
-    DialogResponse(..)
+    DialogResponse(..),
+    MaybeInt(..),
+    defaultInt
 ) where
 
 --String
@@ -80,4 +82,9 @@ or' b True' = True'
 --Algebraic data types with multiple empty constructors are enums
 data DialogResponse = Yes | No | Help | Quit
 
+--Algebraic data types with arguments
+data MaybeInt = NoInt | JustInt Int
+defaultInt :: MaybeInt -> Int -> Int
+defaultInt NoInt defaultValue  = defaultValue
+defaultInt (JustInt i) _ = i
 
