@@ -13,7 +13,12 @@ module Types(
     getCustomerId,
     getCustomerNameId,
     getCustomerLuckyNumber,
-    StringTree(..)
+    StringTree(..),
+    Bool'(..),
+    not',
+    and',
+    or',
+    DialogResponse(..)
 ) where
 
 --String
@@ -60,5 +65,19 @@ getCustomerId (Customer id _ _) = id
 getCustomerNameId (Customer _ name _) = name
 getCustomerLuckyNumber (Customer _ _ luckyNumber) = luckyNumber
 data StringTree = StringTree String [StringTree]
+
+--Algebraic Data Types with Multiple Constructors
+data Bool' = False' | True'
+not' True' = False'
+not' False' = True'
+and' True' True' = True'
+and' False' b = False'
+and' b False' = False'
+or' False' False' = False'
+or' True' b = True'
+or' b True' = True'
+
+--Algebraic data types with multiple empty constructors are enums
+data DialogResponse = Yes | No | Help | Quit
 
 
