@@ -6,8 +6,14 @@ module Types(
     String',
     CustomerId(..),
     customerIdToInt,
+    Customer'(..),
+    alice,
+    sally,
     Customer(..),
-    alice
+    getCustomerId,
+    getCustomerNameId,
+    getCustomerLuckyNumber,
+    StringTree(..)
 ) where
 
 --String
@@ -35,14 +41,24 @@ customerIdToInt :: CustomerId -> Int
 customerIdToInt (CustomerId i) = i
 
 --Record Types
-data Customer = Customer {
+data Customer' = Customer' {
     customerId :: CustomerId,
     name :: String,
     luckyNumber :: Int
 }
-alice :: Customer 
-alice = Customer {
+alice :: Customer' 
+alice = Customer' {
     customerId = CustomerId(0),
     name = "Alice",
     luckyNumber = 7
 }
+sally = alice { name = "Sally", luckyNumber = 84 }
+
+--Algebraic Data Types
+data Customer = Customer CustomerId String Int
+getCustomerId (Customer id _ _) = id
+getCustomerNameId (Customer _ name _) = name
+getCustomerLuckyNumber (Customer _ _ luckyNumber) = luckyNumber
+data StringTree = StringTree String [StringTree]
+
+
