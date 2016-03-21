@@ -20,7 +20,11 @@ module Types(
     or',
     DialogResponse(..),
     MaybeInt(..),
-    defaultInt
+    defaultInt,
+    StringList(..),
+    Maybe2(..),
+    defaultValue,
+    List(..)
 ) where
 
 --String
@@ -87,4 +91,14 @@ data MaybeInt = NoInt | JustInt Int
 defaultInt :: MaybeInt -> Int -> Int
 defaultInt NoInt defaultValue  = defaultValue
 defaultInt (JustInt i) _ = i
+
+--Algebraic string list
+data StringList = EmptyStringList | ConsStringList String StringList
+
+--Parameterized types
+data Maybe2 t = Just2 t | Nothing2
+defaultValue :: Maybe2 t -> t -> t
+defaultValue Nothing2 x  = x
+defaultValue (Just2 x) _ = x
+data List t = Empty | Cons t (List t)
 
