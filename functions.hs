@@ -1,3 +1,13 @@
+module Functions(
+    square,
+    isPositive,
+    pow2,
+    repeatString,
+    elementAt,
+    select,
+    naturalNumbers
+) where
+
 --Returns the square of x
 square x = x * x
 

@@ -1,3 +1,15 @@
+module HigherOrderFunctions (
+    compose,
+    seven,
+    add, add3, add3', add3'',
+    (.+),
+    lengths,
+    nonEmpty,
+    sumList,
+    pointwiseSum, pointwiseSum',
+    notNull
+) where
+
 --Composes functions f and g
 compose f g x = f(g(x))
 
@@ -28,4 +40,3 @@ pointwiseSum' list1 list2 = zipWith(+)(list1)(list2)
 
 --Function composition
 notNull x = (not.null)(x)
-notNull' = (not.null)
