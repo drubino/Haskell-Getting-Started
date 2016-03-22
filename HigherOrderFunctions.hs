@@ -1,14 +1,4 @@
-module HigherOrderFunctions (
-    compose,
-    seven,
-    add, add3, add3', add3'',
-    (.+),
-    lengths,
-    nonEmpty,
-    sumList,
-    pointwiseSum, pointwiseSum',
-    notNull
-) where
+module HigherOrderFunctions where
 
 --Composes functions f and g
 compose f g x = f(g(x))

@@ -1,31 +1,4 @@
-module Types(
-    str,
-    add3,
-    getLength,
-    showSum,
-    String',
-    CustomerId(..),
-    customerIdToInt,
-    Customer'(..),
-    alice,
-    sally,
-    Customer(..),
-    getCustomerId,
-    getCustomerNameId,
-    getCustomerLuckyNumber,
-    StringTree(..),
-    Bool'(..),
-    not',
-    and',
-    or',
-    DialogResponse(..),
-    MaybeInt(..),
-    defaultInt,
-    StringList(..),
-    Maybe2(..),
-    defaultValue,
-    List(..)
-) where
+module Types where
 
 --String
 str :: [Char]

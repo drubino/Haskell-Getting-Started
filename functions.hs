@@ -1,13 +1,4 @@
-module Functions(
-    square,
-    isPositive,
-    pow2,
-    repeatString,
-    elementAt,
-    select,
-    naturalNumbers,
-    selectMany
-) where
+module Functions where
 
 --Returns the square of x
 square x = x * x

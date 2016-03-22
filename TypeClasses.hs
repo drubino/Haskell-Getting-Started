@@ -1,12 +1,4 @@
-module TypeClasses(  
-    contains,
-    RGB(..),
-    Maybe'(..),
-    Eq'(..),
-    Measurable(..),
-    pathLength,
-    Ord'(..)
-) where
+module TypeClasses where
 
 --Requires the Eq type class context for the type parameter
 contains :: (Eq t) => t -> [t] -> Bool
