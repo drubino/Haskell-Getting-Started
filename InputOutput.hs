@@ -1,6 +1,7 @@
 module InputOutput(
     helloWorld,
-    echo
+    echo,
+    readTwice
 ) where
 
 --The program expects a main function
@@ -20,4 +21,12 @@ echo = do
     line <- getLine
     putStrLn(line)
     echo
+    
+--Let in do blocks
+readTwice :: IO ()
+readTwice = do
+    line1 <- getLine
+    line2 <- getLine
+    let lines = line1 ++ " " ++ line2
+    putStrLn(lines)
  
