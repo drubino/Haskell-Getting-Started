@@ -1,7 +1,8 @@
 module TypeClasses(  
     contains,
     RGB(..),
-    Maybe'(..)
+    Maybe'(..),
+    Eq'(..)
 ) where
 
 --Requires the Eq type class context for the type parameter
@@ -28,3 +29,8 @@ instance (Eq t) => Eq (Maybe' t) where
     Nothing' == (Just' _) = False
     (Just' _) == Nothing' = False
     (Just' x) == (Just' y) = x == y 
+    
+--Defining type classes
+class Eq' t where 
+    (.==) :: t -> t -> Bool
+    (./=) :: t -> t -> Bool
