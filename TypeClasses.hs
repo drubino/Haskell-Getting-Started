@@ -2,7 +2,10 @@ module TypeClasses(
     contains,
     RGB(..),
     Maybe'(..),
-    Eq'(..)
+    Eq'(..),
+    Measurable(..),
+    pathLength,
+    Ord'(..)
 ) where
 
 --Requires the Eq type class context for the type parameter
@@ -36,6 +39,12 @@ class Eq' t where
     (./=) :: t -> t -> Bool
     x ./= y = not(x .== y)
     x .== y = not(x ./= y)
+    
+class (Eq' t) => Ord' t where 
+    (.<)    :: t -> t -> Bool
+    (.<=)   :: t -> t -> Bool
+    (.>)    :: t -> t -> Bool
+    (.>=)   :: t -> t -> Bool
 
 --Defining the type class Measurable 
 class Measurable t where
