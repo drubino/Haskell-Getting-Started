@@ -1,3 +1,4 @@
+{-# LANGUAGE ViewPatterns #-}
 module Collections where 
     
 import qualified Data.Set as Set
@@ -18,3 +19,7 @@ toMap' [] map = map
 toSeq list = toSeq'(list)(Seq.empty)
 toSeq' (first : rest) seq = toSeq'(rest)(seq |> first)
 toSeq' [] seq = seq
+
+seqLength :: Seq a -> Int
+seqLength (viewl -> EmptyL) = 0
+seqLength (viewl -> first :< rest) = 1 + seqLength(rest)
