@@ -1,5 +1,6 @@
 module InputOutput(
-    helloWorld
+    helloWorld,
+    echo
 ) where
 
 --The program expects a main function
@@ -12,5 +13,11 @@ main2 = putStrLn("Hello World") -- Not Printed
 helloWorld = do
     putStrLn("Hello")
     putStrLn("World")
-    
+
+--Reading data from the console
+echo :: IO ()
+echo = do
+    line <- getLine
+    putStrLn(line)
+    echo
  
