@@ -34,3 +34,14 @@ instance (Eq t) => Eq (Maybe' t) where
 class Eq' t where 
     (.==) :: t -> t -> Bool
     (./=) :: t -> t -> Bool
+    x ./= y = not(x .== y)
+    x .== y = not(x ./= y)
+
+--Defining the type class Measurable 
+class Measurable t where
+    distance :: t -> t -> Double
+    
+pathLength :: (Measurable t) => [t] -> Double
+pathLength [] = 0
+pathLength (_ : []) = 0
+pathLength (first : second : rest) = distance(first)(second) + pathLength(second : rest)
