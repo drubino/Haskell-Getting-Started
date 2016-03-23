@@ -1,4 +1,5 @@
 module Monads where
+import Control.Monad.Reader
 
 --Defining the Monad type class
 class Monad' m where
@@ -18,6 +19,25 @@ addM' mx my = do
     x <- mx
     y <- my
     return(x + y)
+    
+--Reader Monad
+getFirstStatement :: Reader String String
+getFirstStatement = do 
+    name <- ask
+    return(name ++ " woke up")
+getSecondStatement :: Reader String String
+getSecondStatement = do
+    name <- ask
+    return(name ++ " wrote some Haskell")
+getStory :: Reader String String
+getStory = do 
+    firstStatement <- getFirstStatement
+    secondStatement <- getSecondStatement
+    return ("First, " ++ firstStatement ++ ". Second, " ++ secondStatement ++ ".")
+story = do 
+    name <- getLine
+    return(runReader(getStory)(name))
+
     
 
     
