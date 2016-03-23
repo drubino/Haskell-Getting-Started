@@ -2,6 +2,7 @@ module Monads where
 import Control.Monad.Reader
 import Control.Monad.State
 import Control.Monad.ST
+import Control.Monad
 import Data.STRef
 
 --Defining the Monad type class
@@ -72,3 +73,7 @@ sum' list = runST $ do
     sum <- newSTRef(0)
     sumST(list)(sum)
     readSTRef(sum)
+    
+--lifting functions into monads
+addMaybe :: Num t => Maybe t -> Maybe t-> Maybe t
+addMaybe m1 m2 = liftM2(+)(m1)(m2)
