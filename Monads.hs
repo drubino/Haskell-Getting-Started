@@ -1,5 +1,6 @@
 module Monads where
 import Control.Monad.Reader
+import Control.Monad.State
 
 --Defining the Monad type class
 class Monad' m where
@@ -20,7 +21,7 @@ addM' mx my = do
     y <- my
     return(x + y)
     
---Reader Monad
+--The Reader Monad
 getFirstStatement :: Reader String String
 getFirstStatement = do 
     name <- ask
@@ -37,7 +38,22 @@ getStory = do
 story = do 
     name <- getLine
     return(runReader(getStory)(name))
-
     
-
+--The State Monad
+harmonicStep :: State (Double, Double) Double
+harmonicStep = do
+    (position, velocity) <- get 
+    let acceleration = (-0.01 * position)
+        velocity' = velocity + acceleration
+        position' = position + velocity'
+    put(position', velocity')
+    return(position)
+    
+harmonic :: State (Double, Double) [Double]
+harmonic = do 
+    position <- harmonicStep
+    laterPositions <- harmonic
+    return(position : laterPositions)
+    
+positions = evalState(harmonic)(1,0)
     
