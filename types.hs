@@ -16,4 +16,5 @@ showSum list = show(sum(list))
 
 --Type synonym
 type String = [Char]
+type Point = (Double, Double)
 
