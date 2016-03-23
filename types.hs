@@ -17,7 +17,6 @@ showSum :: (Num t, Show t) => [t] -> [Char]
 showSum list = show(sum(list))
 
 --Type synonym
-<<<<<<< 5217e456b8d35cd65d7a6d58c28a8e3fa212f30a
 type String' = [Char]
 
 --newtype
@@ -75,8 +74,4 @@ defaultValue :: Maybe2 t -> t -> t
 defaultValue Nothing2 x  = x
 defaultValue (Just2 x) _ = x
 data List t = Empty | Cons t (List t)
-=======
-type String = [Char]
-type Point = (Double, Double)
->>>>>>> Rebase
 
