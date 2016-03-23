@@ -1,6 +1,8 @@
 module Monads where
 import Control.Monad.Reader
 import Control.Monad.State
+import Control.Monad.ST
+import Data.STRef
 
 --Defining the Monad type class
 class Monad' m where
@@ -56,4 +58,17 @@ harmonic = do
     return(position : laterPositions)
     
 positions = evalState(harmonic)(1,0)
-    
+
+--ST Monad
+sumST :: [Int] -> STRef s Int -> ST s ()
+sumST [] sumRef = return ()
+sumST (first : rest) sumRef = do 
+    sum <- readSTRef(sumRef)
+    writeSTRef(sumRef)(sum + first)
+    sumST(rest)(sumRef)
+
+sum' :: [Int] -> Int
+sum' list = runST $ do
+    sum <- newSTRef(0)
+    sumST(list)(sum)
+    readSTRef(sum)
